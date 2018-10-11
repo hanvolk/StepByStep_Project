@@ -3,8 +3,8 @@
   BankingSystem에 필요한 함수들의 정의
 */
 
-
 #include "BankingCommonDel.h"
+#include "Declaration.h"
 #include "Accout.h"
 
 void ClearBuf(void)
@@ -32,6 +32,7 @@ void MakeAccout(void)
     cout<<"[계좌개설]"<<endl;
     cout<<"계좌ID : "; cin>>id;
     cout<<"이  름 : "; cin>>name;
+    ClearBuf();
     cout<<"입금액 : "; cin>>balance;
     cout<<endl;
 
@@ -41,8 +42,11 @@ void MakeAccout(void)
     accNum++;
 
     cout<<name<<"님의 신규 계좌 개설이 완료 되었습니다."<<endl;
+    cout<<"accNum : "<<accNum<<endl;
+    StoreAccData();
     ClearBuf();
     getchar();
+
 }
 
 void DepositMoney(void)
@@ -59,12 +63,15 @@ void DepositMoney(void)
         {
             accArr[i].balance+=money;
             cout<<"입금완료"<<endl<<endl;
+            StoreAccData();
             ClearBuf();
             getchar();
             return;
         }
     }
     cout<<"유효하지 않은 ID 입니다."<<endl<<endl;
+    ClearBuf();
+    getchar();
 }
 
 void WithdrawMoney(void)
@@ -88,6 +95,7 @@ void WithdrawMoney(void)
             }
             accArr[i].balance-=money;
             cout<<"출금완료"<<endl<<endl;
+            StoreAccData();
             ClearBuf();
             getchar();
             return;
@@ -103,6 +111,50 @@ void ShowAllAccInfo()
         cout<<"이  름 : "<<accArr[i].cusName<<endl;
         cout<<"잔  액 : "<<accArr[i].balance<<endl<<endl;
     }
+
+    cout<<"총 계좌수 : "<<accNum<<endl;
     ClearBuf();
     getchar();
+}
+
+void StoreAccData()
+{
+
+    FILE* fpw=fopen("PhoeData.dat","wb");
+    if(fpw==NULL)
+    {
+        cout<<"파일 저장에 오류가 발생 했습니다."<<endl;
+        ClearBuf();
+        getchar();
+        return;
+    }
+    fwrite((void*)accArr,sizeof(Account),accNum,fpw);
+    fclose(fpw);
+}
+
+void LoadAccData()
+{
+    int i=0,cnt=0;
+    Account buf;
+    FILE* fpr=fopen("PhoeData.dat","rb");
+    if(fpr==NULL)
+    {
+        cout<<"파일을 불러 오는데 실패 하였습니다."<<endl;
+
+        getchar();
+        return;
+    }
+
+    while(1)
+    {
+        cnt=fread((void*)&buf,sizeof(Account),1,fpr);
+        if(cnt<1)
+            break;
+        accArr[i]=buf;
+        i++;
+    }
+    accNum=i;
+
+    fclose(fpr);
+    return;
 }

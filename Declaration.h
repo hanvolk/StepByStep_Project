@@ -12,7 +12,7 @@ void WithdrawMoney(void);
 void ShowAllAccInfo(void);
 void ClearBuf(void);
 void StoreAccData(void);
- void LoadAccData(void);
+void LoadAccData(void);
 
 #endif // __DECLARATION_H__
 

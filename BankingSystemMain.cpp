@@ -3,6 +3,7 @@
 
 int main()
 {
+    LoadAccData();
     int choice;
 
     while(1)
