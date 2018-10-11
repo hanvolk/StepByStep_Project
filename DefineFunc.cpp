@@ -3,7 +3,6 @@
   BankingSystem에 필요한 함수들의 정의
 */
 
-
 #include "BankingCommonDel.h"
 #include "Accout.h"
 
@@ -11,6 +10,37 @@ void ClearBuf(void)
 {
     while(getchar()!='\n');
 }
+
+
+Account::Account(int ID, int money, char* name):accID(ID), balance(money)
+{
+    cusName=new char[strlen(name)+1];
+    strcpy(cusName,name);
+}
+int Account::GetAccID(){return accID;}
+void Account::Deposit(int money)
+{
+    balance+=money;
+}
+int Account::Withdraw(int money)
+{
+    if(balance<money)
+        return 0;
+    balance-=money;
+    return money;
+}
+void Account::ShowAllAccInfo()
+{
+    cout<<"계좌ID : "<<accID<<endl;
+    cout<<"이  름 : "<<cusName<<endl;
+    cout<<"잔  액 : "<<balance<<endl;
+}
+Account::~Account()
+{
+    delete []cusName;
+}
+
+
 
 void ShowMenu(void)
 {
@@ -35,10 +65,7 @@ void MakeAccout(void)
     cout<<"입금액 : "; cin>>balance;
     cout<<endl;
 
-    accArr[accNum].accID=id;
-    accArr[accNum].balance=balance;
-    strcpy(accArr[accNum].cusName,name);
-    accNum++;
+    accArr[accNum++]=new Account(id,balance,name);
 
     cout<<name<<"님의 신규 계좌 개설이 완료 되었습니다."<<endl;
     ClearBuf();
@@ -55,9 +82,9 @@ void DepositMoney(void)
 
     for(int i=0;i<accNum;i++)
     {
-        if(accArr[i].accID==id)
+        if(accArr[i]->GetAccID()==id)
         {
-            accArr[i].balance+=money;
+            accArr[i]->Deposit(money);
             cout<<"입금완료"<<endl<<endl;
             ClearBuf();
             getchar();
@@ -77,16 +104,16 @@ void WithdrawMoney(void)
 
     for(int i=0;i<accNum;i++)
     {
-        if(accArr[i].accID==id)
+        if(accArr[i]->GetAccID()==id)
         {
-            if(accArr[i].balance<money)
+            if(accArr[i]->Withdraw(money)==0)
             {
                 cout<<"잔액부족"<<endl<<endl;
                 ClearBuf();
                 getchar();
                 return;
             }
-            accArr[i].balance-=money;
+
             cout<<"출금완료"<<endl<<endl;
             ClearBuf();
             getchar();
@@ -99,9 +126,8 @@ void ShowAllAccInfo()
 {
     for(int i=0;i<accNum;i++)
     {
-        cout<<"계좌ID : "<<accArr[i].accID<<endl;
-        cout<<"이  름 : "<<accArr[i].cusName<<endl;
-        cout<<"잔  액 : "<<accArr[i].balance<<endl<<endl;
+        accArr[i]->ShowAllAccInfo();
+        cout<<endl;
     }
     ClearBuf();
     getchar();
