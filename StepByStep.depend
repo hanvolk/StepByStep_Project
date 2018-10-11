@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1539173187 source:c:\users\hanvo\documents\stepbystep\bankingsystemmain.cpp
+	"BankingCommonDel.h"
+	"Declaration.h"
+
+1539172077 c:\users\hanvo\documents\stepbystep\bankingcommondel.h
+	<iostream>
+	<cstdio>
+	<cstring>
+
+1539173055 c:\users\hanvo\documents\stepbystep\declaration.h
+
+1539173188 source:c:\users\hanvo\documents\stepbystep\definefunc.cpp
+	"BankingCommonDel.h"
+	"Accout.h"
+
+1539172100 c:\users\hanvo\documents\stepbystep\accout.h
+	"BankingCommonDel.h"
+
