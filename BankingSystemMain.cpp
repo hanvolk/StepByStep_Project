@@ -1,15 +1,16 @@
 #include "BankingCommonDel.h"
 #include "Declaration.h"
 
+
 int main()
 {
-    LoadAccData();
+    //LoadAccData();
     int choice;
 
     while(1)
     {
         ShowMenu();
-        cout<<"¼±ÅÃ : ";
+        cout<<"select :";
         cin>>choice;
         cout<<endl;
 
@@ -28,6 +29,7 @@ int main()
             ShowAllAccInfo();
             break;
         case EXIT:
+            Exit();
             return 0;
         default:
             cout<<"Illegal selection.."<<endl;

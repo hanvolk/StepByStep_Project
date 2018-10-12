@@ -1,0 +1,38 @@
+MyBanking System ver 2.0
+
+ C스타일의 코드를 C++ 스타일로 전환
+   -- 구조체 를 클래스로 변환
+   -- 클래스의 맴버함수의 선언과 정의를 분리
+
+정보은닉의 구현
+   -- 계좌 정보의 데이터(맴버변수)는 private 맴버 변수로 선언 해서 접근을 제한
+   -- 맴버변수의 데이터값을 변경(접근) 시킬 수 있는 함수들을 따로 만들어 준다.
+      (Account() - 생성자,  GetAccID() ,  Withdraw(),  ShowAccInfo() ,  ~Account() - 소멸자)
+
+캡슐화의 구현
+   -- 외부(Main함수)에서 계좌정보에 직접 접근은 못하고, 정보은닉 구현에서 만들어 놓은
+      함수들을 호출 하는 함수를 만들어서 프로그램의 기능을 실현 시킨다.
+    즉, 실제 값을 변경 시키는 함수들과 명령을 내리는(기능을 실행하는) 함수들을 구분해서
+    외부(main)에서는 값의 변경에대해 직접적인 관여를 하지는 않게 된다. 
+
+   계좌의 생성
+     MakeAccount() 함수 호출
+          계좌ID, 이름, 입금액 등의 정보를 Account 클래스의 생성자에 매개변수로 전달해서
+          Account의 생성자가 맴버변수의 값에 접근해서 계좌를 생성
+
+   입금
+     DepositMoney 함수 호출
+       입금할 금액을 Deposit() 함수에 전달해서 잔액(balance)를 변경
+
+   출금 
+    WithdrawMoney() 함수 호출
+      출금할 금액을 Withdraw() 함수에 전달해서 잔액(balance) 변경
+
+#ifndef 대신 #pragma once 사용
+Menu 화면 출력 이후 "선택" 이라는 한글 문제 되서 select로 변경
+
+Main 의 select 문에서 EXIT에 메모리의 할당을 함수를 따로 만들어서 사용
+   --> Main에서 delete arrArr 배열과 accNum 에 접근 하려면 #include "Account.h" 가 필요 한데
+       이렇게 하니까, arrArr 와 accNum이 중복되어서 선언 되었다고 Error 발생 시킨다.
+
+

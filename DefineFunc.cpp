@@ -3,9 +3,12 @@
   BankingSystem에 필요한 함수들의 정의
 */
 
+#include"BankingCommonDel.h"
 #include "BankingCommonDel.h"
 #include "Declaration.h"
 #include "Accout.h"
+
+
 
 void ClearBuf(void)
 {
@@ -23,6 +26,31 @@ void ShowMenu(void)
     cout<<"5. 프로그램 종료"<<endl;
 }
 
+Account::Account(int ID, int money, char* name):accID(ID),balance(money)
+{
+    cusName=new char[strlen(name)+1];
+    strcpy(cusName,name);
+}
+
+int Account::GetAccID(){return accID;}
+void Account::Deposit(int money){balance+=money;}
+
+int Account::Withdraw(int money)
+{
+    if(balance<money)
+        return 0;
+
+    balance-=money;
+    return money;
+}
+
+void Account::ShowAccInfo()
+{
+    cout<<"계좌ID : "<<accID<<endl;
+    cout<<"이  름 : "<<cusName<<endl;
+    cout<<"잔  액 : "<<balance<<endl;
+}
+
 void MakeAccout(void)
 {
     int id;
@@ -36,14 +64,11 @@ void MakeAccout(void)
     cout<<"입금액 : "; cin>>balance;
     cout<<endl;
 
-    accArr[accNum].accID=id;
-    accArr[accNum].balance=balance;
-    strcpy(accArr[accNum].cusName,name);
-    accNum++;
+   accArr[accNum++]=new Account(id,balance,name);
 
     cout<<name<<"님의 신규 계좌 개설이 완료 되었습니다."<<endl;
     cout<<"accNum : "<<accNum<<endl;
-    StoreAccData();
+   // StoreAccData();
     ClearBuf();
     getchar();
 
@@ -59,11 +84,11 @@ void DepositMoney(void)
 
     for(int i=0;i<accNum;i++)
     {
-        if(accArr[i].accID==id)
+        if(accArr[i]->GetAccID()==id)
         {
-            accArr[i].balance+=money;
+            accArr[i]->Deposit(money);
             cout<<"입금완료"<<endl<<endl;
-            StoreAccData();
+           // StoreAccData();
             ClearBuf();
             getchar();
             return;
@@ -84,18 +109,18 @@ void WithdrawMoney(void)
 
     for(int i=0;i<accNum;i++)
     {
-        if(accArr[i].accID==id)
+        if(accArr[i]->GetAccID()==id)
         {
-            if(accArr[i].balance<money)
+            if(accArr[i]->Withdraw(money)==0)
             {
                 cout<<"잔액부족"<<endl<<endl;
                 ClearBuf();
                 getchar();
                 return;
             }
-            accArr[i].balance-=money;
+
             cout<<"출금완료"<<endl<<endl;
-            StoreAccData();
+        //    StoreAccData();
             ClearBuf();
             getchar();
             return;
@@ -107,9 +132,8 @@ void ShowAllAccInfo()
 {
     for(int i=0;i<accNum;i++)
     {
-        cout<<"계좌ID : "<<accArr[i].accID<<endl;
-        cout<<"이  름 : "<<accArr[i].cusName<<endl;
-        cout<<"잔  액 : "<<accArr[i].balance<<endl<<endl;
+        accArr[i]->ShowAccInfo();
+        cout<<endl;
     }
 
     cout<<"총 계좌수 : "<<accNum<<endl;
@@ -117,6 +141,12 @@ void ShowAllAccInfo()
     getchar();
 }
 
+void Exit()
+{
+     for(int i=0;i<accNum;i++)
+            delete accArr[i];
+}
+/*
 void StoreAccData()
 {
 
@@ -158,3 +188,4 @@ void LoadAccData()
     fclose(fpr);
     return;
 }
+*/
