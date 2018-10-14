@@ -4,7 +4,7 @@
 
 int main()
 {
-    //LoadAccData();
+    LoadAccData();
     int choice;
 
     while(1)

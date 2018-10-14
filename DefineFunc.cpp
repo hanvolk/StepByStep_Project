@@ -46,9 +46,7 @@ int Account::Withdraw(int money)
 
 void Account::ShowAccInfo()
 {
-    cout<<"계좌ID : "<<accID<<endl;
-    cout<<"이  름 : "<<cusName<<endl;
-    cout<<"잔  액 : "<<balance<<endl;
+    cout<<" "<<accID<<"    "<<cusName<<"   "<<balance;
 }
 
 void MakeAccout(void)
@@ -68,10 +66,8 @@ void MakeAccout(void)
 
     cout<<name<<"님의 신규 계좌 개설이 완료 되었습니다."<<endl;
     cout<<"accNum : "<<accNum<<endl;
-   // StoreAccData();
+    StoreAccData();
     ClearBuf();
-    getchar();
-
 }
 
 void DepositMoney(void)
@@ -88,7 +84,7 @@ void DepositMoney(void)
         {
             accArr[i]->Deposit(money);
             cout<<"입금완료"<<endl<<endl;
-           // StoreAccData();
+            StoreAccData();
             ClearBuf();
             getchar();
             return;
@@ -120,7 +116,7 @@ void WithdrawMoney(void)
             }
 
             cout<<"출금완료"<<endl<<endl;
-        //    StoreAccData();
+            StoreAccData();
             ClearBuf();
             getchar();
             return;
@@ -130,6 +126,7 @@ void WithdrawMoney(void)
 
 void ShowAllAccInfo()
 {
+    cout<<"계좌ID"<<"   "<<"성 명"<<"    "<<"잔 액"<<endl;
     for(int i=0;i<accNum;i++)
     {
         accArr[i]->ShowAccInfo();
@@ -146,27 +143,45 @@ void Exit()
      for(int i=0;i<accNum;i++)
             delete accArr[i];
 }
-/*
+
 void StoreAccData()
 {
-
-    FILE* fpw=fopen("PhoeData.dat","wb");
+    FILE* fpw=fopen("PhoneData.dat","wb");
     if(fpw==NULL)
     {
-        cout<<"파일 저장에 오류가 발생 했습니다."<<endl;
+        cout<<"파일을 불러 오는데 실패 했습니다."<<endl;
         ClearBuf();
         getchar();
-        return;
     }
-    fwrite((void*)accArr,sizeof(Account),accNum,fpw);
+
+    fwrite((void*)&accNum,sizeof(int),1,fpw);
+    //파일 제일 앞 부분에 총 계좌수 정보를 기록
+
+    for(int i=0;i<accNum;i++)
+    {
+        bufAcc buf(accArr[i]->GetAccID(), accArr[i]->GetBalance(),accArr[i]->GetCusName());
+        /*
+           bufAcc 클래스는 계좌 정보 저장, 불러오기를 위해 정의한 클래스로 이름을 저장하는 맴버변수 cusName이
+           char* 형이 아닌, char형 배열로 정의 되어 있기 때문에 파일에 이름 문자열을 제대로 저장 할 수 있다.
+        */
+
+        fwrite((void*)&buf,sizeof(bufAcc),1,fpw);
+    }
+
+    ClearBuf();
     fclose(fpw);
 }
 
 void LoadAccData()
 {
-    int i=0,cnt=0;
-    Account buf;
-    FILE* fpr=fopen("PhoeData.dat","rb");
+    int i=0;
+    bufAcc* buf=new bufAcc();
+    /* bufAcc는 저장과 불러오기를 위해 정의한 클래스로
+       bufAcc형 임시 객체를 생성
+         ==> 그 주소값을 bufAcc 포인터 형 객체 buf에 저장 */
+
+
+    FILE* fpr=fopen("PhoneData.dat","rb");
     if(fpr==NULL)
     {
         cout<<"파일을 불러 오는데 실패 하였습니다."<<endl;
@@ -175,17 +190,27 @@ void LoadAccData()
         return;
     }
 
-    while(1)
+    fread((void*)&accNum,sizeof(int),1,fpr);
+    // 파일의 제일 앞 부분에 저장된 전체 계좌수 정보가 있으므로 그것 부터 불러 와서 accNum을 초기화
+
+    cout<<"accNum : "<<accNum<<endl;
+
+    while(i<accNum)
     {
-        cnt=fread((void*)&buf,sizeof(Account),1,fpr);
-        if(cnt<1)
-            break;
-        accArr[i]=buf;
+        fread((void*)buf,sizeof(bufAcc),1,fpr);
+        // fpr(파일 포인터)에서 한번에 bufAcc 크기만큼의 데이터를
+        // buf(bufAcc형 포인터)에 저장
+
+        accArr[i]=new Account(buf->GetID(),buf->Getbalance(),buf->GetcusName());
+        /*
+          accArr 배열에(Account 포인터 배열) buf에 저장된 값을 Account 임시 객체를 생성 후
+          그 주소값을 동적 할당 해서 파일에 계좌 정보 값을 불러와서 저장하고 있다.
+        */
+
         i++;
     }
-    accNum=i;
+
 
     fclose(fpr);
     return;
 }
-*/
