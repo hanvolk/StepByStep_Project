@@ -1,14 +1,14 @@
 # depslib dependency file v1.0
-1539589325 source:c:\users\hanvo\documents\stepbystep\bankingsystemmain.cpp
+1539597012 source:c:\users\hanvo\documents\stepbystep\bankingsystemmain.cpp
 	"BankingCommonDel.h"
 	"Declaration.h"
 
-1539589325 c:\users\hanvo\documents\stepbystep\bankingcommondel.h
+1539597012 c:\users\hanvo\documents\stepbystep\bankingcommondel.h
 	<iostream>
 	<cstdio>
 	<cstring>
 
-1539589325 c:\users\hanvo\documents\stepbystep\declaration.h
+1539597852 c:\users\hanvo\documents\stepbystep\declaration.h
 
 1539595420 source:c:\users\hanvo\documents\stepbystep\definefunc.cpp
 	"BankingCommonDel.h"

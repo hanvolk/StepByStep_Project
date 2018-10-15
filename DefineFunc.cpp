@@ -38,7 +38,7 @@ Account::Account(const Account& ref):accID(ref.accID), balance(ref.balance)
     strcpy(cusName,ref.cusName);
 }
 
-int Account::GetAccID(){return accID;}
+int Account::GetAccID() const{return accID;}
 void Account::Deposit(int money){balance+=money;}
 
 int Account::Withdraw(int money)
@@ -50,9 +50,10 @@ int Account::Withdraw(int money)
     return money;
 }
 
-void Account::ShowAccInfo()
+void Account::ShowAccInfo() const
 {
     cout<<" "<<accID<<"    "<<cusName<<"   "<<balance;
+    ClearBuf();
 }
 
 void MakeAccout(void)
@@ -130,7 +131,7 @@ void WithdrawMoney(void)
     }
 }
 
-void ShowAllAccInfo()
+void ShowAllAccInfo(void)
 {
     cout<<"°èÁÂID"<<"   "<<"¼º ¸í"<<"    "<<"ÀÜ ¾×"<<endl;
     for(int i=0;i<accNum;i++)

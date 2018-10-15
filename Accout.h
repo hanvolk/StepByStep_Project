@@ -23,12 +23,12 @@ public:
     Account():accID(0), balance(0){cusName=NULL;};
     Account(int ID, int money, char* name);
     Account(const Account& ref);
-    int GetAccID();
+    int GetAccID() const;
     int GetBalance(){return balance;};
     char* GetCusName(){return cusName;};
     void Deposit(int money);
     int Withdraw(int money);
-    void ShowAccInfo();
+    void ShowAccInfo() const;
     ~Account(){delete []cusName;};
 };
 
