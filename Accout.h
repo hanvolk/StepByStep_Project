@@ -17,10 +17,10 @@ public:
     Account(int ID, int money, char* name);
     Account(const Account& ref);
 
-    int GetAccID();
+    int GetAccID() const;
     void Deposit(int money);
     int Withdraw(int money);
-    void ShowAllAccInfo();
+    void ShowAllAccInfo() const;
     ~Account();
 };
 

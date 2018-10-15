@@ -22,7 +22,7 @@ Account::Account(const Account& ref):accID(ref.accID), balance(ref.balance)
         cusName=new char[strlen(ref.cusName)+1];
         strcpy(cusName,ref.cusName);
 }
-int Account::GetAccID(){return accID;}
+int Account::GetAccID() const {return accID;}
 void Account::Deposit(int money)
 {
     balance+=money;
@@ -34,7 +34,7 @@ int Account::Withdraw(int money)
     balance-=money;
     return money;
 }
-void Account::ShowAllAccInfo()
+void Account::ShowAllAccInfo() const
 {
     cout<<"°èÁÂID : "<<accID<<endl;
     cout<<"ÀÌ  ¸§ : "<<cusName<<endl;
