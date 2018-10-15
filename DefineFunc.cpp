@@ -32,6 +32,12 @@ Account::Account(int ID, int money, char* name):accID(ID),balance(money)
     strcpy(cusName,name);
 }
 
+Account::Account(const Account& ref):accID(ref.accID), balance(ref.balance)
+{
+    cusName=new char[strlen(ref.cusName)+1];
+    strcpy(cusName,ref.cusName);
+}
+
 int Account::GetAccID(){return accID;}
 void Account::Deposit(int money){balance+=money;}
 
