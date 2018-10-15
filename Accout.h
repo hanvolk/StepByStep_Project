@@ -1,5 +1,5 @@
 /*
-  BankingSystem ver 2.0
+  BankingSystem ver 3.0
   계좌 정보에 대한 클래스의 정의
 */
 #ifndef __ACCOUNT_H__
@@ -15,6 +15,7 @@ private:
 
 public:
     Account(int ID, int money, char* name);
+    Account(const Account& ref);
 
     int GetAccID();
     void Deposit(int money);

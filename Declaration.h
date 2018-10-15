@@ -1,5 +1,5 @@
 /*
-  BankingSystem ver 1.0
+  BankingSystem ver 3.0
   BankingSystem에 필요한 함수들의 선언
 */
 #ifndef __DECLARATION_H__

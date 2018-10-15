@@ -1,5 +1,5 @@
 /*
-  BankingSystem ver 1.0
+  BankingSystem ver 3.0
   BankingSystem에 필요한 함수들의 정의
 */
 
@@ -16,6 +16,11 @@ Account::Account(int ID, int money, char* name):accID(ID), balance(money)
 {
     cusName=new char[strlen(name)+1];
     strcpy(cusName,name);
+}
+Account::Account(const Account& ref):accID(ref.accID), balance(ref.balance)
+{
+        cusName=new char[strlen(ref.cusName)+1];
+        strcpy(cusName,ref.cusName);
 }
 int Account::GetAccID(){return accID;}
 void Account::Deposit(int money)
