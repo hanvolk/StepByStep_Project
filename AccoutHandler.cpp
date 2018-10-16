@@ -1,53 +1,16 @@
-/*
-  BankingSystem ver 3.0
-  BankingSystem에 필요한 함수들의 정의
-*/
-
 #include "BankingCommonDel.h"
-#include "Accout.h"
+#include "AccoutHandler.h"
+#include "Account.h"
 
 void ClearBuf(void)
 {
-    while(getchar()!='\n');
+    while(getchar()!='\n'){};
 }
 
+AccountHandler::AccountHandler():accNum(0)
+{};
 
-Account::Account(int ID, int money, char* name):accID(ID), balance(money)
-{
-    cusName=new char[strlen(name)+1];
-    strcpy(cusName,name);
-}
-Account::Account(const Account& ref):accID(ref.accID), balance(ref.balance)
-{
-        cusName=new char[strlen(ref.cusName)+1];
-        strcpy(cusName,ref.cusName);
-}
-int Account::GetAccID() const {return accID;}
-void Account::Deposit(int money)
-{
-    balance+=money;
-}
-int Account::Withdraw(int money)
-{
-    if(balance<money)
-        return 0;
-    balance-=money;
-    return money;
-}
-void Account::ShowAllAccInfo() const
-{
-    cout<<"계좌ID : "<<accID<<endl;
-    cout<<"이  름 : "<<cusName<<endl;
-    cout<<"잔  액 : "<<balance<<endl;
-}
-Account::~Account()
-{
-    delete []cusName;
-}
-
-
-
-void ShowMenu(void)
+void AccountHandler::ShowMenu(void)
 {
     system("cls");
     cout<<"===== Menu ====="<<endl;
@@ -58,7 +21,7 @@ void ShowMenu(void)
     cout<<"5. 프로그램 종료"<<endl;
 }
 
-void MakeAccout(void)
+void AccountHandler::MakeAccout(void)
 {
     int id;
     char name[NAME_LEN];
@@ -77,7 +40,7 @@ void MakeAccout(void)
     getchar();
 }
 
-void DepositMoney(void)
+void AccountHandler::DepositMoney(void)
 {
     int money;
     int id;
@@ -99,7 +62,7 @@ void DepositMoney(void)
     cout<<"유효하지 않은 ID 입니다."<<endl<<endl;
 }
 
-void WithdrawMoney(void)
+void AccountHandler::WithdrawMoney(void)
 {
     int money;
     int id;
@@ -114,26 +77,31 @@ void WithdrawMoney(void)
             if(accArr[i]->Withdraw(money)==0)
             {
                 cout<<"잔액부족"<<endl<<endl;
-                ClearBuf();
                 getchar();
                 return;
             }
 
             cout<<"출금완료"<<endl<<endl;
-            ClearBuf();
             getchar();
             return;
         }
     }
 }
 
-void ShowAllAccInfo()
+void AccountHandler::ShowAllAccInfo()
 {
     for(int i=0;i<accNum;i++)
     {
-        accArr[i]->ShowAllAccInfo();
+        accArr[i]->ShowAccInfo();
         cout<<endl;
     }
-    ClearBuf();
+    getchar();
+
     getchar();
 }
+AccountHandler::~AccountHandler()
+{
+    for(int i=0;i<accNum;i++)
+        delete accArr[i];
+}
+

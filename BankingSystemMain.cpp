@@ -1,13 +1,15 @@
 #include "BankingCommonDel.h"
-#include "Declaration.h"
+#include "AccoutHandler.h"
 
 int main()
 {
+    AccountHandler manager;
     int choice;
+
 
     while(1)
     {
-        ShowMenu();
+        manager.ShowMenu();
         cout<<"¼±ÅÃ : ";
         cin>>choice;
         cout<<endl;
@@ -15,16 +17,16 @@ int main()
         switch(choice)
         {
         case MAKE:
-            MakeAccout();
+            manager.MakeAccout();
             break;
         case DEPOSIT:
-            DepositMoney();
+            manager.DepositMoney();
             break;
         case WITHDRAW:
-            WithdrawMoney();
+            manager.WithdrawMoney();
             break;
         case INQUIRE:
-            ShowAllAccInfo();
+            manager.ShowAllAccInfo();
             break;
         case EXIT:
             return 0;

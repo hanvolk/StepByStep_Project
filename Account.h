@@ -1,7 +1,8 @@
 /*
-  BankingSystem ver 3.0
+  BankingSystem ver 5.0
   계좌 정보에 대한 클래스의 정의
 */
+
 #ifndef __ACCOUNT_H__
 #define __ACCOUNT_H__
 #include "BankingCommonDel.h"
@@ -20,12 +21,10 @@ public:
     int GetAccID() const;
     void Deposit(int money);
     int Withdraw(int money);
-    void ShowAllAccInfo() const;
+    void ShowAccInfo() const;
     ~Account();
 };
 
-Account* accArr[100];  // Accout 저장을 위한 배열, Account 배열에서 Account 포인터 배열로 변경
-int accNum=0;        // 저장된 Account 수
 
 #endif // __ACCOUNT_H__
 

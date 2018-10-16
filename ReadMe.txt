@@ -1,34 +1,57 @@
-StepByStep Project ver 2.0
+StepByStep Project ver 5.0
 
- C스타일의 코드를 C++ 스타일로 전환
-   -- 구조체 를 클래스로 변환
-   -- 클래스의 맴버함수의 선언과 정의를 분리
+기능 제공을 담당하는 컨트롤 클래스 AccountHandler 를 정의 
+class AccountHandler
+{
+private:
+    Account* accArr[100];  // Accout 저장을 위한 배열, Account.h 에 전역으로 정의 되어 있던 배열인데 , AccountHandelr 클래스의 Private 영역으로 이동 
+    int accNum;              // 총 계좌의 숫자, Account.h 에 전역으로 정의 되어 있던 배열인데 , AccountHandelr 클래스의 Private 영역으로 이동 
+public:
+    AccountHandler();
+    void ShowMenu(void);
+    void MakeAccout(void);
+    void DepositMoney(void);
+    void WithdrawMoney(void);
+    void ShowAllAccInfo(void);
+    ~AccountHandler();
+};
 
-정보은닉의 구현
-   -- 계좌 정보의 데이터(맴버변수)는 private 맴버 변수로 선언 해서 접근을 제한
-   -- 맴버변수의 데이터값을 변경(접근) 시킬 수 있는 함수들을 따로 만들어 준다.
-      (Account() - 생성자,  GetAccID() ,  Withdraw(),  ShowAccInfo() ,  ~Account() - 소멸자)
+/*
+  계좌 정보의 데이터, 계좌의 수의 정보를 담고 있는 accArr 배열 이나, accNum 변수를 전역으로 두면 어디서나 접근 가능한 형태가 되므로 프로그램의 안정성에 좋지 않다. 
+  AccountHandler 라는 컨트롤 클래스를 정의해 놓고, 그 컨트롤 핸들러에 의해서만 접근 가능하게 제한 함으로서 정보은닉이 실현 
+*/
 
-캡슐화의 구현
-   -- 외부(Main함수)에서 계좌정보에 직접 접근은 못하고, 정보은닉 구현에서 만들어 놓은
-      함수들을 호출 하는 함수를 만들어서 프로그램의 기능을 실현 시킨다.
-    즉, 실제 값을 변경 시키는 함수들과 명령을 내리는(기능을 실행하는) 함수들을 구분해서
-    외부(main)에서는 값의 변경에대해 직접적인 관여를 하지는 않게 된다. 
+함수의 위치 이동
+DefineFunc.cpp 에 있던 함수들 중 
+   계좌의 기능을 담당했던 
+      void ShowMenu()  	//메뉴의 출력
+      void MakeAccout()	// 계좌의 생성
+      void DepositMoney()	// 입금 기능 실행
+      void WithdrawMoney()	// 출금 기능 실행
+      void ShowAllAccInfo()	// 모든 계좌 정보 출력 
+  이러한 함수들을 AccountHandler 클래스의 맴버 함수로 정의 
 
-   계좌의 생성
-     MakeAccount() 함수 호출
-          계좌ID, 이름, 입금액 등의 정보를 Account 클래스의 생성자에 매개변수로 전달해서
-          Account의 생성자가 맴버변수의 값에 접근해서 계좌를 생성
 
-   입금
-     DepositMoney 함수 호출
-       입금할 금액을 Deposit() 함수에 전달해서 잔액(balance)를 변경
+DefineFunc.cpp 에 있던 함수들 중 
+   실제 Account 의 정보에 직접 접근 하던 함수들은 
+     Account(int ID, int money, char* name)	// 생성자
+     void Deposit(int money)			// 입금
+     void Withdraw(int money)		// 출금
+     void ShowAccInfo() const		// 계좌정보 출력
+     ~Account()   				// 소멸자
+ 이러한 함수들은 Account.cpp 라는 파일을 따로 만들어서 함수 정의 
 
-   출금 
-    WithdrawMoney() 함수 호출
-      출금할 금액을 Withdraw() 함수에 전달해서 잔액(balance)을 변경
+즉 
+  Entity 클래스 Account.h 와 그에 대한 함수의 정의 Account.cpp
+  Control 클래스 AccountHandler.h 와 그에 대한 함수의 정의 AccountHandler.cpp 
+는 새로 생성 되었고
+  Declaration.h  과 DefineFunc.cpp 파일은 삭제 했다.
 
-  
-           
- 
+이제
+ Main 함수에서 AccountHandler 객체 manager를 만들어서
+  manager.ShowMenu()
+  manager.MakeAccount() 
+이렇게 기능을 수행 하게 된다.
+
+
    
