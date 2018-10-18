@@ -1,15 +1,16 @@
 #include "BankingCommonDel.h"
-#include "Declaration.h"
+#include "AccountHandler.h"
 
 
 int main()
 {
-    LoadAccData();
+    AccountHandler manager;
+    manager.LoadAccData();
     int choice;
 
     while(1)
     {
-        ShowMenu();
+        manager.ShowMenu();
         cout<<"select :";
         cin>>choice;
         cout<<endl;
@@ -17,20 +18,22 @@ int main()
         switch(choice)
         {
         case MAKE:
-            MakeAccout();
+            manager.MakeAccout();
             break;
         case DEPOSIT:
-            DepositMoney();
+            manager.DepositMoney();
             break;
         case WITHDRAW:
-            WithdrawMoney();
-            break;
+           manager.WithdrawMoney();
+           break;
         case INQUIRE:
-            ShowAllAccInfo();
+            manager.ShowAllAccInfo();
             break;
         case EXIT:
-            Exit();
+            manager.Exit();
             return 0;
+        case 0:
+            manager.DeleteAccount();
         default:
             cout<<"Illegal selection.."<<endl;
         }

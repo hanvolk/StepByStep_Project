@@ -32,7 +32,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="Accout.h" />
+		<Unit filename="Account.cpp" />
+		<Unit filename="Account.h" />
+		<Unit filename="AccountHandler.cpp" />
+		<Unit filename="AccountHandler.h" />
 		<Unit filename="BankingCommonDel.h" />
 		<Unit filename="BankingSystemMain.cpp" />
 		<Unit filename="Declaration.h" />
