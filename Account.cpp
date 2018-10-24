@@ -1,5 +1,5 @@
 /*
-  BankingSystem ver 5.0
+  BankingSystem ver 6.0
   Account클래스의 맴버 함수 정의
 */
 #include "BankingCommonDel.h"

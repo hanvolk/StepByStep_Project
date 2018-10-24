@@ -10,14 +10,14 @@ int main()
     while(1)
     {
         manager.ShowMenu();
-        cout<<"¼±ÅÃ : ";
+        cout<<"Select : ";
         cin>>choice;
         cout<<endl;
 
         switch(choice)
         {
         case MAKE:
-            manager.MakeAccout();
+            manager.MakeAccount();
             break;
         case DEPOSIT:
             manager.DepositMoney();

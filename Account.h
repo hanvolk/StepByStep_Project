@@ -1,11 +1,11 @@
 /*
-  BankingSystem ver 5.0
+  BankingSystem ver 6.0
   계좌 정보에 대한 클래스의 정의
 */
 
 #ifndef __ACCOUNT_H__
 #define __ACCOUNT_H__
-#include "BankingCommonDel.h"
+
 
 class Account
 {

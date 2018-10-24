@@ -1,5 +1,5 @@
 /*
-  BankingSystem ver 5.0
+  BankingSystem ver 6.0
   Account의 control 클래스의 정의
 */
 
@@ -16,10 +16,13 @@ private:
 public:
     AccountHandler();
     void ShowMenu(void);
-    void MakeAccout(void);
+    void MakeAccount(void);
     void DepositMoney(void);
     void WithdrawMoney(void);
     void ShowAllAccInfo(void);
     ~AccountHandler();
+protected:
+    void MakeNormalAccount(void);
+    void MakeCreditAccount(void);
 };
 #endif // __ACCOUNTHANDLER_H__
