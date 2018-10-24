@@ -21,7 +21,7 @@ public:
 
     virtual void Deposit(int money)
     {
-        Account::Deposit(money); //원금추가
+        NormalAccount::Deposit(money); //원금과 이자 추가
         Account::Deposit(money*(specialRate/100.0));  // 이자추가
     }
 };

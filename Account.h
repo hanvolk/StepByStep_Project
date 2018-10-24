@@ -19,8 +19,8 @@ public:
     Account(const Account& ref);
 
     int GetAccID() const;
-    void Deposit(int money);
-    int Withdraw(int money);
+    virtual void Deposit(int money);
+    virtual int Withdraw(int money);
     void ShowAccInfo() const;
     ~Account();
 };
