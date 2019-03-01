@@ -34,6 +34,8 @@
 		</Compiler>
 		<Unit filename="Account.cpp" />
 		<Unit filename="Account.h" />
+		<Unit filename="AccountArray.cpp" />
+		<Unit filename="AccountArray.h" />
 		<Unit filename="AccoutHandler.cpp" />
 		<Unit filename="AccoutHandler.h" />
 		<Unit filename="BankingCommonDel.h" />

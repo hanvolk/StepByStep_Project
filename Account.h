@@ -1,6 +1,6 @@
 /*
-  BankingSystem ver 6.0
-  계좌 정보에 대한 클래스의 정의
+  BankingSystem ver 8.0
+  Account 클래스(Entity Class) 대한 클래스의 정의
 */
 
 #ifndef __ACCOUNT_H__
@@ -17,6 +17,7 @@ private:
 public:
     Account(int ID, int money, char* name);
     Account(const Account& ref);
+    Account& operator=(const Account& ref);
 
     int GetAccID() const;
     virtual void Deposit(int money);

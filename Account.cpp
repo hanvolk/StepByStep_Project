@@ -1,6 +1,6 @@
 /*
-  BankingSystem ver 6.0
-  Account클래스의 맴버 함수 정의
+  BankingSystem ver 8.0
+  Account 클래스(Entity Class) 의 함수들의 정의
 */
 #include "BankingCommonDel.h"
 #include "Account.h"
@@ -15,6 +15,17 @@ Account::Account(const Account& ref):accID(ref.accID), balance(ref.balance)
 {
     cusName=new char[strlen(ref.cusName)+1];
     strcpy(cusName,ref.cusName);
+}
+
+Account& Account::operator=(const Account& ref)
+{
+    delete []cusName;
+    cusName=new char[strlen(ref.cusName)+1];
+    strcpy(cusName,ref.cusName);
+    accID=ref.accID;
+    balance=ref.balance;
+
+    return *this;
 }
 
 int Account::GetAccID() const{return accID;}

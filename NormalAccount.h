@@ -1,5 +1,5 @@
 /*
-  BankingSystem ver 6.0
+  BankingSystem ver 8.0
   NormalAccount(보통예금 계좌) 클래스의 정의
 */
 

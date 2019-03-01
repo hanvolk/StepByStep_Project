@@ -1,6 +1,6 @@
 /*
-  BankingSystem ver 6.0
-  HighCreditAccount(신용신뢰 계좌) 클래스의 정의
+   BankingSystem ver 8.0
+   NormalAccount(보통예금 계좌) 클래스의 함수들 정의
 */
 
 #ifndef __HIGHCREDIT_ACCOUNT_H__
