@@ -1,5 +1,5 @@
 /*
-  BankingSystem ver 8.0
+  BankingSystem ver 9.0
  AccountHandler클래스(control 클래스) 함수의 정의
 */
 #include "BankingCommonDel.h"
@@ -49,7 +49,8 @@ void AccountHandler::MakeAccount(void)
 void AccountHandler::MakeNormalAccount(void)
 {
     int id;
-    char name[NAME_LEN];
+    //char name[NAME_LEN];
+    String name;
     int balance;
     int interRate;
 
@@ -66,7 +67,8 @@ void AccountHandler::
     MakeCreditAccount(void)
 {
     int id;
-    char name[NAME_LEN];
+    //char name[NAME_LEN];
+    String name;
     int balance;
     int interRate;
     int creditLevel;

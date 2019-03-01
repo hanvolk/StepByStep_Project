@@ -60,42 +60,50 @@
 1540519857 c:\users\hanvo\documents\stepbystep\highcreditaccount.h
 	"NormalAccount.h"
 
-1551425368 source:e:\practicefolder\stepbystep\account.cpp
+1551445509 source:e:\practicefolder\stepbystep\account.cpp
 	"BankingCommonDel.h"
 	"Account.h"
 
-1551425368 e:\practicefolder\stepbystep\bankingcommondel.h
+1551445509 e:\practicefolder\stepbystep\bankingcommondel.h
 	<iostream>
 	<cstdio>
 	<cstring>
 
-1551425368 e:\practicefolder\stepbystep\account.h
+1551445509 e:\practicefolder\stepbystep\account.h
+	"String.h"
 
-1551425670 source:e:\practicefolder\stepbystep\accountarray.cpp
+1551445509 source:e:\practicefolder\stepbystep\accountarray.cpp
 	"BankingCommonDel.h"
 	"AccountArray.h"
 
-1551425731 e:\practicefolder\stepbystep\accountarray.h
+1551445509 e:\practicefolder\stepbystep\accountarray.h
 	"Account.h"
 
-1551425368 source:e:\practicefolder\stepbystep\accouthandler.cpp
+1551445509 source:e:\practicefolder\stepbystep\accouthandler.cpp
 	"BankingCommonDel.h"
 	"AccoutHandler.h"
 	"Account.h"
 	"NormalAccount.h"
 	"HighCreditAccount.h"
 
-1551426303 e:\practicefolder\stepbystep\accouthandler.h
+1551445509 e:\practicefolder\stepbystep\accouthandler.h
 	"Account.h"
 	"AccountArray.h"
 
-1551425368 e:\practicefolder\stepbystep\normalaccount.h
+1551445509 e:\practicefolder\stepbystep\normalaccount.h
 	"Account.h"
 
-1551425368 e:\practicefolder\stepbystep\highcreditaccount.h
+1551445509 e:\practicefolder\stepbystep\highcreditaccount.h
 	"NormalAccount.h"
 
-1551425368 source:e:\practicefolder\stepbystep\bankingsystemmain.cpp
+1551445509 source:e:\practicefolder\stepbystep\bankingsystemmain.cpp
 	"BankingCommonDel.h"
 	"AccoutHandler.h"
+
+1551445787 e:\practicefolder\stepbystep\string.h
+	"BankingCommonDel.h"
+
+1551445787 source:e:\practicefolder\stepbystep\string.cpp
+	"BankingCommonDel.h"
+	"String.h"
 

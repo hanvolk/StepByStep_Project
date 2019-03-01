@@ -1,5 +1,5 @@
 /*
-   BankingSystem ver 8.0
+   BankingSystem ver 9.0
    NormalAccount(보통예금 계좌) 클래스의 함수들 정의
 */
 
@@ -13,7 +13,8 @@ class HighCreditAccount:public NormalAccount
 private:
     int specialRate;
 public:
-    HighCreditAccount(int ID, int money, char* name, int rate, int special)
+    //HighCreditAccount(int ID, int money, char* name, int rate, int special)
+    HighCreditAccount(int ID, int money, String name, int rate, int special)
         :NormalAccount(ID, money, name, rate), specialRate(special)
     {
         // HighCreditAccount Class의 객체 생성과정에서 생성자로 이자율(specialRate) 정보를 등록 하고 있다.

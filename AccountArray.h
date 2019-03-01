@@ -1,5 +1,5 @@
 /*
-  BankingSystem ver 8.0
+  BankingSystem ver 9.0
   AccountArray 클래스 정의 - Account 객체의 주소값을 저장하는 배열 클래스
 */
 

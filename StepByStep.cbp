@@ -42,6 +42,8 @@
 		<Unit filename="BankingSystemMain.cpp" />
 		<Unit filename="HighCreditAccount.h" />
 		<Unit filename="NormalAccount.h" />
+		<Unit filename="String.cpp" />
+		<Unit filename="String.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
