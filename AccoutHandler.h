@@ -1,5 +1,5 @@
 /*
-  BankingSystem ver 9.0
+  BankingSystem ver 10.0
   AccountHandler클래스(control 클래스)의 정의
 */
 
@@ -7,12 +7,12 @@
 #define __ACCOUNTHANDLER_H__
 
 #include "Account.h"
-#include "AccountArray.h"
+#include "BoundCheckArray.h"
 
 class AccountHandler
 {
 private:
-    BoundCheckAccountPtrArray accArr;  // Accout 저장을 위한 배열클래스, Account 클래스 객체의 주소값을 저장
+    BoundCheckArray<Account*> accArr;  // Accout 저장을 위한 배열클래스, Account 클래스 객체의 주소값을 저장
     int accNum;        // 저장된 Account 수
 public:
     AccountHandler();

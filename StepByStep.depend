@@ -86,9 +86,9 @@
 	"NormalAccount.h"
 	"HighCreditAccount.h"
 
-1551445509 e:\practicefolder\stepbystep\accouthandler.h
+1552803862 e:\practicefolder\stepbystep\accouthandler.h
 	"Account.h"
-	"AccountArray.h"
+	"BoundCheckArray.h"
 
 1551445509 e:\practicefolder\stepbystep\normalaccount.h
 	"Account.h"
@@ -103,7 +103,11 @@
 1551445787 e:\practicefolder\stepbystep\string.h
 	"BankingCommonDel.h"
 
-1551445787 source:e:\practicefolder\stepbystep\string.cpp
+1551446149 source:e:\practicefolder\stepbystep\string.cpp
 	"BankingCommonDel.h"
 	"String.h"
+
+1552804140 e:\practicefolder\stepbystep\boundcheckarray.h
+	"BankingCommonDel.h"
+	"Account.h"
 

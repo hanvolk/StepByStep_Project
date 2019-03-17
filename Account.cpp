@@ -1,5 +1,5 @@
 /*
-  BankingSystem ver 9.0
+  BankingSystem ver 10.0
   Account 클래스(Entity Class) 의 함수들의 정의
 */
 #include "BankingCommonDel.h"

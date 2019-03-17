@@ -1,11 +1,12 @@
+
 /*
   BankingSystem ver 10.0
   BoundCheckArray 클래스의 템플릿 작성
   (BoundCheckArray 클래스를 템플릿화)
 */
 
-#ifndef __ACCOUNTARRAY_H__
-#define __ACCOUNTARRAY_H__
+#ifndef __BOUND_CHECK_ARRAY_H__
+#define __BOUND_CHECK_ARRAY_H__
 
 #include "BankingCommonDel.h"
 #include "Account.h"
@@ -26,12 +27,14 @@ public:
     ~BoundCheckArray();
 };
 
+template<typename T>
 BoundCheckArray<T>::BoundCheckArray(int len):arrlen(len)
 {
     arr=new T[len];
 }
 
-T& BoundCheckArray::operator[](int idx)
+template<typename T>
+T& BoundCheckArray<T>::operator[](int idx)
 {
     if(idx<0 || idx>=arrlen)
     {
@@ -41,6 +44,7 @@ T& BoundCheckArray::operator[](int idx)
     return arr[idx];
 }
 
+template<typename T>
 T BoundCheckArray<T>::operator[](int idx) const
 {
     if(idx<0 || idx>=arrlen)
@@ -51,15 +55,17 @@ T BoundCheckArray<T>::operator[](int idx) const
     return arr[idx];
 }
 
+template<typename T>
 int BoundCheckArray<T>::GetArrLen() const
 {
     return arrlen;
 }
 
+template<typename T>
 BoundCheckArray<T>::~BoundCheckArray()
 {
     delete []arr;
 }
 
 
-#endif // __ACCOUNTARRAY_H__
+#endif // __BOUND_CHECK_ARRAY_H__

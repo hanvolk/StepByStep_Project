@@ -34,12 +34,11 @@
 		</Compiler>
 		<Unit filename="Account.cpp" />
 		<Unit filename="Account.h" />
-		<Unit filename="AccountArray.cpp" />
-		<Unit filename="AccountArray.h" />
 		<Unit filename="AccoutHandler.cpp" />
 		<Unit filename="AccoutHandler.h" />
 		<Unit filename="BankingCommonDel.h" />
 		<Unit filename="BankingSystemMain.cpp" />
+		<Unit filename="BoundCheckArray.h" />
 		<Unit filename="HighCreditAccount.h" />
 		<Unit filename="NormalAccount.h" />
 		<Unit filename="String.cpp" />
