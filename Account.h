@@ -1,5 +1,5 @@
 /*
-  BankingSystem ver 10.0
+  BankingSystem ver 11.0
   Account 클래스(Entity Class) 대한 클래스의 정의
 */
 
@@ -7,6 +7,7 @@
 #define __ACCOUNT_H__
 
 #include "String.h"
+#include "AccountException.h"
 
 class Account
 {

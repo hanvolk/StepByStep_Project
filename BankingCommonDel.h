@@ -1,5 +1,5 @@
 /*
-  BankingSystem ver 10.0
+  BankingSystem ver 11.0
   공통 헤더 및 Enum 상수들
 */
 

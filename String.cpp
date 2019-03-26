@@ -1,5 +1,5 @@
 /*
-  BankingSystem ver 10.0
+  BankingSystem ver 11.0
   String 클래스의 함수 정의 - 문자열을 다루는 클래스
 */
 

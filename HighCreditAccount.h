@@ -1,5 +1,5 @@
 /*
-   BankingSystem ver 10.0
+   BankingSystem ver 11.0
    NormalAccount(보통예금 계좌) 클래스의 함수들 정의
 */
 

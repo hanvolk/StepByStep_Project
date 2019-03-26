@@ -1,9 +1,10 @@
 /*
-  BankingSystem ver 10.0
+  BankingSystem ver 11.0
   Account 클래스(Entity Class) 의 함수들의 정의
 */
 #include "BankingCommonDel.h"
 #include "Account.h"
+
 
 Account::Account(int ID, int money, String name):accID(ID), balance(money)
 {
@@ -13,11 +14,20 @@ Account::Account(int ID, int money, String name):accID(ID), balance(money)
 }
 
 int Account::GetAccID() const{return accID;}
-void Account::Deposit(int money) {balance+=money;}
+void Account::Deposit(int money)
+{
+    if(money<0)
+        throw MinusMoneyException(money);
+
+    balance+=money;
+}
 int Account::Withdraw(int money)
 {
+    if(money<0)
+        throw MinusMoneyException(money);
+
     if(balance<money)
-        return 0;
+        throw WithDrawException(balance);
 
     balance-=money;
     return money;

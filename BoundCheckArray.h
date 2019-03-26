@@ -1,6 +1,6 @@
 
 /*
-  BankingSystem ver 10.0
+  BankingSystem ver 11.0
   BoundCheckArray 클래스의 템플릿 작성
   (BoundCheckArray 클래스를 템플릿화)
 */

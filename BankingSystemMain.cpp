@@ -1,5 +1,5 @@
 /*
-  BankingSystem ver 10.0
+  BankingSystem ver 11.0
   Main Function
 */
 #include "BankingCommonDel.h"
@@ -28,6 +28,7 @@ int main()
             break;
         case WITHDRAW:
             manager.WithdrawMoney();
+            getchar();
             break;
         case INQUIRE:
             manager.ShowAllAccInfo();

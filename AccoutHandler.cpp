@@ -1,5 +1,5 @@
 /*
-  BankingSystem ver 10.0
+  BankingSystem ver 11.0
  AccountHandler클래스(control 클래스) 함수의 정의
 */
 #include "BankingCommonDel.h"
@@ -104,18 +104,31 @@ void AccountHandler::DepositMoney(void)
     cout<<"계좌ID : "; cin>>id;
     cout<<"입금액 : "; cin>>money;
 
-    for(int i=0;i<accNum;i++)
+    try
     {
-        if(accArr[i]->GetAccID()==id)
+        for(int i=0;i<accNum;i++)
         {
-            accArr[i]->Deposit(money);
-            cout<<"입금완료"<<endl<<endl;
-            ClearBuf();
-            getchar();
-            return;
+            if(accArr[i]->GetAccID()==id)
+            {
+                accArr[i]->Deposit(money);
+                cout<<"입금완료"<<endl<<endl;
+                ClearBuf();
+                getchar();
+                return;
+            }
         }
+        cout<<"유효하지 않은 ID 입니다."<<endl<<endl;
     }
-    cout<<"유효하지 않은 ID 입니다."<<endl<<endl;
+    catch(MinusMoneyException& expn)
+    {
+        expn.ShowExceptionReason();
+    }
+    ClearBuf();
+    getchar();
+
+
+
+
 }
 
 void AccountHandler::WithdrawMoney(void)
@@ -126,22 +139,32 @@ void AccountHandler::WithdrawMoney(void)
     cout<<"계좌ID : "; cin>>id;
     cout<<"출금액 : "; cin>>money;
 
-    for(int i=0;i<accNum;i++)
+    try
     {
-        if(accArr[i]->GetAccID()==id)
+        for(int i=0;i<accNum;i++)
         {
-            if(accArr[i]->Withdraw(money)==0)
+            if(accArr[i]->GetAccID()==id)
             {
-                cout<<"잔액부족"<<endl<<endl;
+                accArr[i]->Withdraw(money);
+
+                cout<<"출금완료"<<endl<<endl;
                 getchar();
                 return;
             }
-
-            cout<<"출금완료"<<endl<<endl;
-            getchar();
-            return;
         }
+        cout<<"유효하지 않은 ID 입니다."<<endl<<endl;
     }
+    catch(WithDrawException& expn)
+    {
+        expn.ShowExceptionReason();
+    }
+    catch(MinusMoneyException& expn)
+    {
+        expn.ShowExceptionReason();
+    }
+    getchar();
+    return;
+
 }
 
 void AccountHandler::ShowAllAccInfo()
